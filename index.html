@@ -1,53 +1,16 @@
 <html>
 
 <head>
-    <style>
-        .cat-container {
-            margin: auto 0px;
-            display: flex;
-            flex-direction:row;
-        }
-        .cat-image{
-            width: 200px;
-            height: 200px;
-        }
-        .card{
-            padding: 5px;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
-    <div class="cat-container" id="catContainer">
+    <div class="sidebar" id="sidebar">
     </div>
-    <script>
-            const array = [1,2];
-            (()=>{
-                createCardNode = (index) =>{
-                    const cardNode = document.createElement('div');
-                    const imgEle = document.createElement('img');
-                    const counterSpan = document.createElement('span');
-                    let counter = 0;
-                    imgEle.src= `res/cat${index+1}.jpg`;
-                    imgEle.className = 'cat-image';
-                    cardNode.className = 'card'
-                    cardNode.innerHTML = index+1;
-                    cardNode.addEventListener('click',(e)=>{
-                        e.preventDefault();
-                        counter++;
-                        counterSpan.innerHTML = `clicked ${counter}`;
-                    });
-                    cardNode.append(imgEle,counterSpan);  
-                    return cardNode;
-                }
-
-                const catContainer= document.getElementById('catContainer');
-                for(let i=0;i<array.length;i++){
-                    const cardNode = createCardNode(i); 
-                    catContainer.appendChild(cardNode);                 
-                }
-            })();
-        </script>
+    <div class="content" id="catContainer">
+    </div>
+    <script src="app.js" />
 </body>
 
 </html>
