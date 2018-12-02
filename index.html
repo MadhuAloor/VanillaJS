@@ -3,31 +3,50 @@
 <head>
     <style>
         .cat-container {
+            margin: auto 0px;
+            display: flex;
+            flex-direction:row;
+        }
+        .cat-image{
             width: 200px;
             height: 200px;
-            margin: auto 0px;
+        }
+        .card{
+            padding: 5px;
         }
     </style>
 </head>
 
 <body>
-    <div class="cat-container" id="catClick">
-        <img src="res/cat.jpg" alt="photo" />
-    </div>
-    <div id="counter">
-    </div>
+    <div class="cat-container" id="catContainer">
     </div>
     <script>
+            const array = [1,2];
             (()=>{
-                const catClick = document.getElementById('catClick');
-                const counter = document.getElementById('counter');
-                let count = 0;
-                catClick.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    count++;
-                    counter.innerHTML = `counter:  ${count}`;
-                })
-            })()
+                createCardNode = (index) =>{
+                    const cardNode = document.createElement('div');
+                    const imgEle = document.createElement('img');
+                    const counterSpan = document.createElement('span');
+                    let counter = 0;
+                    imgEle.src= `res/cat${index+1}.jpg`;
+                    imgEle.className = 'cat-image';
+                    cardNode.className = 'card'
+                    cardNode.innerHTML = index+1;
+                    cardNode.addEventListener('click',(e)=>{
+                        e.preventDefault();
+                        counter++;
+                        counterSpan.innerHTML = `clicked ${counter}`;
+                    });
+                    cardNode.append(imgEle,counterSpan);  
+                    return cardNode;
+                }
+
+                const catContainer= document.getElementById('catContainer');
+                for(let i=0;i<array.length;i++){
+                    const cardNode = createCardNode(i); 
+                    catContainer.appendChild(cardNode);                 
+                }
+            })();
         </script>
 </body>
 
