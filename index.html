@@ -1,0 +1,34 @@
+<html>
+
+<head>
+    <style>
+        .cat-container {
+            width: 200px;
+            height: 200px;
+            margin: auto 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cat-container" id="catClick">
+        <img src="res/cat.jpg" alt="photo" />
+    </div>
+    <div id="counter">
+    </div>
+    </div>
+    <script>
+            (()=>{
+                const catClick = document.getElementById('catClick');
+                const counter = document.getElementById('counter');
+                let count = 0;
+                catClick.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    count++;
+                    counter.innerHTML = `counter:  ${count}`;
+                })
+            })()
+        </script>
+</body>
+
+</html>
